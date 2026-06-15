@@ -28,7 +28,7 @@ export default function NumberBoard({ ganador }) {
             <span className="dot" style={{ background: r.color }} />
             <h3>{r.etiqueta}</h3>
             <span className="board__count">
-              {r.numeros.length} números · {Math.min(r.desde, r.hasta)}–{Math.max(r.desde, r.hasta)}
+              {r.cantidad} números · {r.resumen}
             </span>
           </div>
           <div className="grid">

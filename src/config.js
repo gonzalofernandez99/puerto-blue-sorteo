@@ -9,6 +9,10 @@
 // (Si la imagen todavia no esta subida, la app la oculta sola, no se rompe.)
 const img = (nombre) => (nombre ? import.meta.env.BASE_URL + 'imagenes/' + nombre : null)
 
+// Helper: lista de numeros del A al B (inclusive). Sirve para escribir
+// rangos corridos comodos. Ej:  ...delAl(1, 56)  ->  1, 2, 3, ..., 56
+const delAl = (a, b) => Array.from({ length: b - a + 1 }, (_, i) => a + i)
+
 export const config = {
   // --- Marca ---------------------------------------------------------------
   empresa: 'PUERTO BLUE',
@@ -38,11 +42,19 @@ export const config = {
   ],
 
   // --- Numeros que participan ---------------------------------------------
-  // Los dos rangos se MEZCLAN en una sola bolilla. Sale UN solo numero ganador.
+  // Los grupos se MEZCLAN en una sola bolilla. Sale UN solo numero ganador.
+  // Cada grupo se puede definir de dos formas:
+  //   a) rango corrido:  { desde: 9790, hasta: 9990 }
+  //   b) lista de cupones sueltos:  { numeros: [...delAl(1, 56), 64, 73, ...] }
   // "etiqueta" es solo para mostrar en la planilla / explicar en el video.
   rangos: [
     { desde: 9790, hasta: 9990, etiqueta: 'Ventas Web', color: '#1e74d4' },
-    { desde: 1, hasta: 300, etiqueta: 'Talonario Local (Recoleta)', color: '#0e9f6e' },
+    {
+      etiqueta: 'Talonario Local (Recoleta)',
+      color: '#0e9f6e',
+      // Cupones del talonario: del 1 al 56, mas estos sueltos.
+      numeros: [...delAl(1, 56), 64, 73, 77, 78, 86, 98, 111, 150],
+    },
   ],
 
   // --- Show ---------------------------------------------------------------

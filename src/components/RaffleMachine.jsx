@@ -1,15 +1,16 @@
-import { config } from '../config.js'
+import { rangosConNumeros } from '../lib/numbers.js'
 
 export default function RaffleMachine({ estado, display, total, onSortear, onReiniciar }) {
   const girando = estado === 'spinning'
   const listo = estado === 'done'
+  const rangos = rangosConNumeros()
 
   return (
     <section className="machine">
       <div className="machine__rangos">
-        {config.rangos.map((r, i) => (
+        {rangos.map((r, i) => (
           <span className="chip" key={i} style={{ '--c': r.color }}>
-            {r.etiqueta}: {Math.min(r.desde, r.hasta)}–{Math.max(r.desde, r.hasta)}
+            {r.etiqueta}: {r.cantidad} números
           </span>
         ))}
         <span className="chip chip--total">{total} números en la bolilla</span>
