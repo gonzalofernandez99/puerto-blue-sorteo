@@ -37,7 +37,7 @@ export default function App() {
         <section className="hero">
           <p className="hero__kicker">{config.empresa} · {config.subtitulo}</p>
           <h1 className="hero__titulo">{config.titulo}</h1>
-          <p className="hero__bajada">{config.bajada}</p>
+          {config.bajada && <p className="hero__bajada">{config.bajada}</p>}
 
           <SafeImage
             src={config.showcase}

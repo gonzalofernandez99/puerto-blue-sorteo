@@ -22,13 +22,13 @@ export const config = {
 
   // --- Titulo / textos del show -------------------------------------------
   titulo: 'Gran Sorteo',
-  bajada:
-    'Un solo número gana. Todos los números participantes están a la vista en la planilla para que el sorteo sea 100% transparente.',
+  // Texto opcional debajo del titulo. Si lo dejas vacio (''), no se muestra.
+  bajada: '',
 
   // --- Foto del premio (showcase) -----------------------------------------
   // Imagen grande del premio (la camiseta + las zapatillas).
-  // Copia la foto en  public/imagenes/  con el nombre  premio.jpg
-  showcase: img('premio.jpg'),
+  // Copia la foto en  public/imagenes/  con el nombre  premio.png
+  showcase: img('premio.png'),
 
   // --- Premios -------------------------------------------------------------
   // El unico ganador se lleva TODO esto. "imagen" es opcional.
