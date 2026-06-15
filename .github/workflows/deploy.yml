@@ -40,12 +40,10 @@ jobs:
         run: npm run build
 
       - name: Configurar Pages
+        # IMPORTANTE: una sola vez hay que activar GitHub Pages a mano en
+        # Settings -> Pages -> Source: "GitHub Actions". Despues, cada push
+        # publica la web automaticamente.
         uses: actions/configure-pages@v5
-        with:
-          # Intenta activar GitHub Pages automaticamente (asi no hay que
-          # hacerlo a mano). Si tu cuenta no lo permite, activalo desde
-          # Settings -> Pages -> Source: GitHub Actions.
-          enablement: true
 
       - name: Subir el resultado
         uses: actions/upload-pages-artifact@v3
