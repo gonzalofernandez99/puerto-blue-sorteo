@@ -1,0 +1,59 @@
+name: Deploy a GitHub Pages
+
+# Cada vez que se sube codigo a estas ramas, se construye la web y se publica
+# automaticamente en GitHub Pages.
+on:
+  push:
+    branches:
+      - main
+      - claude/optimistic-clarke-oulohl
+  workflow_dispatch: # permite lanzarlo a mano desde la pestania "Actions"
+
+# Permisos que necesita la accion oficial de GitHub Pages.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Evita despliegues pisandose entre si.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Bajar el codigo
+        uses: actions/checkout@v4
+
+      - name: Preparar Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Construir la web
+        run: npm run build
+
+      - name: Configurar Pages
+        uses: actions/configure-pages@v5
+
+      - name: Subir el resultado
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publicar en GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

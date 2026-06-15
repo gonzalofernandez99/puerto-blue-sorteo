@@ -1,0 +1,32 @@
+========================================================
+  IMAGENES DEL SORTEO  -  Puerto Blue
+========================================================
+
+Pone aca las fotos para personalizar la web. La app las toma
+automaticamente. Si una foto no esta, la web igual funciona
+(no se rompe nada, simplemente no la muestra).
+
+ARCHIVOS QUE USA LA WEB (respeta los nombres):
+
+  premio.jpg   ->  Foto grande del premio (la camiseta + las
+                   zapatillas). Aparece en la portada.
+                   Ideal: cuadrada o vertical, buena resolucion.
+
+  logo.png     ->  (Opcional) Logo de Puerto Blue para la barra
+                   de arriba. Si no lo ponés, se muestra el texto
+                   "PB  PUERTO BLUE".
+                   Para que se active, abrí  src/config.js  y cambiá
+                   la linea del logo a:  logo: img('logo.png')
+
+  flyer.jpg    ->  (Opcional) El flyer promocional, por si lo querés
+                   usar. Ver src/config.js para engancharlo.
+
+COMO SUBIR LAS IMAGENES (la forma facil, desde el navegador):
+  1. Entrá al repositorio en GitHub.
+  2. Metete en la carpeta  public/imagenes
+  3. Boton "Add file" -> "Upload files"
+  4. Arrastrá las fotos (con los nombres de arriba) y confirmá.
+  5. En 1-2 minutos GitHub Pages se actualiza solo.
+
+Tip: si querés cambiar textos, premios o los rangos de numeros,
+todo se edita en el archivo  src/config.js
